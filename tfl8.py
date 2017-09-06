@@ -21,7 +21,7 @@ def add_layer(inputs, in_size, out_size, n_layer, activation_function=None,):
         outputs = Wx_plus_b
     else:
         outputs = activation_function(Wx_plus_b,)
-    tf.summary.histogram(layer_name+'/outputs',biases)
+    tf.summary.histogram(layer_name+'/outputs',outputs)
     return outputs
 
 def compute_accuracy(v_xs,v_ys):
