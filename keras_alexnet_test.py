@@ -7,6 +7,7 @@ import keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D
 from keras.layers.normalization import BatchNormalization
+from keras.callbacks import TensorBoard
 
 
 import tflearn.datasets.oxflower17 as oxflower17
@@ -37,9 +38,9 @@ model.add(Dense(4096,activation='tanh'))
 model.add(Dropout(0.5))
 model.add(Dropout(17,activation='softmax'))
           
-model.summary()
-
 model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
+
+tensorbrd = TensorBoard('logs/alexnet')
 
 model.fit(X,Y,batch_size=64,epochs=100,verbose=1,validation_split=0.1,shuffle=True)
 
